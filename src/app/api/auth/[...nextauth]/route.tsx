@@ -13,6 +13,9 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
   ],
+  session: {
+    maxAge: 1 * 24 * 60 * 60, // 設置為1天
+  },
   callbacks: {
     async session({ session }) {
       const email = session.user?.email;
